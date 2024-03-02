@@ -425,12 +425,12 @@ script = ExtResource("1_s60ro")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jq0cu")
 animation = &"front_idle"
-frame_progress = 0.945471
+frame_progress = 0.310665
 offset = Vector2(2.08165e-12, -15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
-position = Vector2(2.08165e-12, 2.08165e-12)
+position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_mj7y1")
 
 [node name="player_hitbox" type="Area2D" parent="."]
@@ -444,6 +444,17 @@ debug_color = Color(0.878431, 0.870588, 0.866667, 0.419608)
 
 [node name="deal_attack_timer" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+limit_left = 0
+limit_top = 0
+limit_right = 416
+limit_bottom = 220
+limit_smoothed = true
+rotation_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
 
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
