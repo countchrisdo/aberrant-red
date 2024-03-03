@@ -445,11 +445,24 @@ debug_color = Color(0.878431, 0.870588, 0.866667, 0.419608)
 [node name="deal_attack_timer" type="Timer" parent="."]
 wait_time = 0.5
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="world_camera" type="Camera2D" parent="."]
+unique_name_in_owner = true
 zoom = Vector2(4, 4)
 limit_left = 0
 limit_top = 0
 limit_right = 416
+limit_bottom = 220
+limit_smoothed = true
+rotation_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="cliffside_camera" type="Camera2D" parent="."]
+unique_name_in_owner = true
+zoom = Vector2(4, 4)
+limit_left = 0
+limit_top = 0
+limit_right = 220
 limit_bottom = 220
 limit_smoothed = true
 rotation_smoothing_enabled = true
