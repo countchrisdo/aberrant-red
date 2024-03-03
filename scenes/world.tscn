@@ -25,14 +25,14 @@ layer_2/name = "ysort"
 layer_2/y_sort_enabled = true
 layer_2/tile_data = PackedInt32Array(720899, 2, 5, 131078, 2, 5, 262161, 2, 5, 720909, 2, 5, 851990, 2, 5, 851985, 393218, 7, 851976, 393218, 7, 65545, 393218, 7, 655384, 393218, 7, 720902, 655362, 7, 720916, 655362, 7, 14, 2, 0, 327695, 327682, 0)
 
-[node name="Player" parent="." instance=ExtResource("4_8hmqi")]
-position = Vector2(28, 51)
+[node name="player" parent="." instance=ExtResource("4_8hmqi")]
+position = Vector2(203, 19)
 
 [node name="enemy" parent="." instance=ExtResource("5_rorvw")]
 position = Vector2(161, 88)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(416, 227)
+position = Vector2(28, 33)
 
 [node name="level border" type="StaticBody2D" parent="."]
 visible = false

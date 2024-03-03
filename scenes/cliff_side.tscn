@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dcmxl0jabscu7"]
+[gd_scene load_steps=5 format=3 uid="uid://dcmxl0jabscu7"]
 
+[ext_resource type="Script" path="res://scripts/cliff_side.gd" id="1_gy85k"]
 [ext_resource type="TileSet" uid="uid://gaq62uq3o3f7" path="res://art/tilesets/tilemap.tres" id="1_m8hw5"]
 [ext_resource type="PackedScene" uid="uid://bwfnsyhux5rd" path="res://scenes/player.tscn" id="2_b5ap7"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jhhdm"]
+size = Vector2(236.5, 49)
+
 [node name="cliff_side" type="Node2D"]
+script = ExtResource("1_gy85k")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_m8hw5")
@@ -16,10 +21,20 @@ layer_2/name = "ysort"
 layer_2/tile_data = PackedInt32Array()
 
 [node name="level border" type="StaticBody2D" parent="."]
+position = Vector2(0, -6)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="level border"]
-position = Vector2(46, 17)
-polygon = PackedVector2Array(230, -47, 223, 327, -168, 326, -171, -59, 11, -41, 9, -64, -181, -72, -182, 344, 243, 342, 252, -74, 93, -68, 9, -87, 10, -41, 95, -45)
+position = Vector2(49, 16)
+polygon = PackedVector2Array(156, -12, 153, 268, -79, 267, -75, -17, -47, -17, -48, -62, -181, -72, -182, 344, 243, 342, 252, -74, 93, -68, -38, -62, -39, -13, 93, -14)
 
 [node name="Player" parent="." instance=ExtResource("2_b5ap7")]
-position = Vector2(78, 167)
+position = Vector2(81, 214)
+
+[node name="cliffside_exitpoint" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cliffside_exitpoint"]
+position = Vector2(85, 253)
+shape = SubResource("RectangleShape2D_jhhdm")
+
+[connection signal="body_entered" from="cliffside_exitpoint" to="." method="_on_cliffside_exitpoint_body_entered"]
+[connection signal="body_exited" from="cliffside_exitpoint" to="." method="_on_cliffside_exitpoint_body_exited"]
