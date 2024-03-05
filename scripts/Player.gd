@@ -7,29 +7,9 @@ var player_alive = true
 
 var attack_ip = false
 
-#Look into smother movement options
 const speed = 100
 var current_dir = "none"
 
-func _ready():
-	$AnimatedSprite2D.play("front_idle")
-
-func _physics_process(delta):
-	#calling functions here instead bc this is every frame
-	player_movement(delta)
-	enemy_attack()
-	attack()
-	current_camera()
-	update_health()
-	
-	if health <= 0:
-		player_alive = false
-		health = 0
-		print("Player has been killed")
-		#Deletes player. DONT KEEP
-		self.queue_free()
-		#Add death/game over mechanic here
-	
 func player_movement(delta):
 
 	if Input.is_action_pressed("ui_right"):
@@ -56,8 +36,28 @@ func player_movement(delta):
 		play_anim(0)
 		velocity.x = 0
 		velocity.y = 0
-	
 	move_and_slide()
+
+func _ready():
+	$AnimatedSprite2D.play("front_idle")
+
+func _physics_process(delta):
+	#calling functions here bc this is every frame
+	player_movement(delta)
+	enemy_attack()
+	attack()
+	current_camera()
+	update_health()
+	
+	if health <= 0:
+		player_alive = false
+		health = 0
+		print("Player has been killed")
+		#Deletes player. DONT KEEP
+		self.queue_free()
+		#Add death/game over mechanic here
+	
+
 
 func play_anim(movement):
 	var dir = current_dir

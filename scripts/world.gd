@@ -18,6 +18,7 @@ func _on_cliffside_transition_point_body_entered(body):
 		print("door entered, setting transition_scene to: true")
 		global.transition_scene = true
 
+#tihs function was causing issues, setting transition scene to false too early
 func _on_cliffside_transition_point_body_exited(body):
 	if body.has_method("player"):
 		#print("door exited, setting transition_scene to: false")
