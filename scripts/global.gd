@@ -11,6 +11,20 @@ var player_start_posx = 232
 var player_start_posy = 100
 
 var game_first_loadin = true
+var game_state
+
+func _ready():
+	game_state = "idle"
+	
+	
+func game_started():
+	game_state = "running"
+	#run code or call functions important to the games initial operation
+
+func end_game():
+	game_state = "over"
+	#go to end game screen
+	#save anything worth saving
 
 func finish_changescenes():
 	print("finish_changescenes called")
