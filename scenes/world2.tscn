@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bx2c2tyrqng42"]
 
-[ext_resource type="Script" path="res://scripts/world.gd" id="1_qw68u"]
+[ext_resource type="Script" path="res://scripts/world2.gd" id="1_k4b8h"]
 [ext_resource type="TileSet" uid="uid://gaq62uq3o3f7" path="res://art/tilesets/tilemap.tres" id="2_726ck"]
 [ext_resource type="PackedScene" uid="uid://bwfnsyhux5rd" path="res://scenes/player.tscn" id="3_tlhg4"]
 [ext_resource type="PackedScene" uid="uid://dsox77cqrj7pl" path="res://scenes/enemy.tscn" id="4_3fcmu"]
@@ -8,9 +8,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csb0r"]
 size = Vector2(48.5, 40.5)
 
-[node name="world" type="Node2D"]
+[node name="world2" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_qw68u")
+script = ExtResource("1_k4b8h")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -40,14 +40,13 @@ position_smoothing_enabled = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="level border"]
 position = Vector2(152, -61)
-polygon = PackedVector2Array(82, 61, 108, 61, 264, 61, 264, 158, 310, 159, 310, 198, 263, 198, 265, 317, -153, 316, -151, 61, -138, 60, 24, 60, 24, 46, -176, 50, -179, 331, 277, 332, 274, 209, 325, 210, 325, 150, 278, 148, 278, 52, 81, 47, 81, 26, 22, 26, 20, 34, 25, 60, 75, 61)
+polygon = PackedVector2Array(82, 61, 108, 61, 264, 61, 265, 317, -153, 316, -153, 202, -169, 202, -170, 163, -153, 161, -153, 61, 18, 59, 19, 47, -176, 50, -179, 331, 277, 332, 276, 46, 22, 49, 22, 60, 75, 61)
 
-[node name="cliffside_transition_point" type="Area2D" parent="."]
+[node name="world2_exit_point" type="Area2D" parent="."]
 position = Vector2(152, -61)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="cliffside_transition_point"]
-position = Vector2(284.75, 179.75)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="world2_exit_point"]
+position = Vector2(-171, 181)
 shape = SubResource("RectangleShape2D_csb0r")
 
-[connection signal="body_entered" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_entered"]
-[connection signal="body_exited" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_exited"]
+[connection signal="body_entered" from="world2_exit_point" to="." method="_on_world_2_exit_point_body_entered"]

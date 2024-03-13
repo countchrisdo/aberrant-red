@@ -42,12 +42,11 @@ position_smoothing_enabled = true
 position = Vector2(152, -61)
 polygon = PackedVector2Array(82, 61, 108, 61, 264, 61, 264, 158, 310, 159, 310, 198, 263, 198, 265, 317, -153, 316, -151, 61, -138, 60, 24, 60, 24, 46, -176, 50, -179, 331, 277, 332, 274, 209, 325, 210, 325, 150, 278, 148, 278, 52, 81, 47, 81, 26, 22, 26, 20, 34, 25, 60, 75, 61)
 
-[node name="cliffside_transition_point" type="Area2D" parent="."]
+[node name="world2_transition_point" type="Area2D" parent="."]
 position = Vector2(152, -61)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="cliffside_transition_point"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="world2_transition_point"]
 position = Vector2(284.75, 179.75)
 shape = SubResource("RectangleShape2D_csb0r")
 
-[connection signal="body_entered" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_entered"]
-[connection signal="body_exited" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_exited"]
+[connection signal="body_entered" from="world2_transition_point" to="." method="_on_world2_transition_point_body_entered"]
