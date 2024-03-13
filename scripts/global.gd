@@ -1,5 +1,8 @@
 extends Node
 
+signal game_over
+
+@onready var player = get_node("/root/world/player")
 var player_current_attack = false
 
 var current_scene = "world" #world cliff_side
@@ -15,6 +18,17 @@ var game_state
 
 func _ready():
 	game_state = "idle"
+	player.player_died.connect(_on_player_died)
+
+#func _physics_process(delta):
+	#if not player.player_alive:
+		#return
+
+func _on_player_died():
+	print("global has recieved death signal")
+	print("now emiting: game_over")
+	emit_signal("game_over")
+	end_game()
 	
 	
 func game_started():
@@ -23,6 +37,8 @@ func game_started():
 
 func end_game():
 	game_state = "over"
+	get_tree().change_scene_to_file("res://scenes/menu_end.tscn")
+	current_scene = "end_screen"
 	#go to end game screen
 	#save anything worth saving
 

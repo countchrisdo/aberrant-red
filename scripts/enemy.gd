@@ -1,15 +1,15 @@
 extends CharacterBody2D
-
 #higher number speed = slower
 var speed = 40
+var active = true
 var player_chase = false
 var player = null
-
 var health = 100
 var player_inattack_zone = false
 var can_take_damage = true
 
 func _physics_process(delta):
+	#This runs every frame
 	deal_with_damage()
 	update_health()
 	
@@ -37,23 +37,26 @@ func _on_detection_area_body_exited(body):
 func enemy():
 	pass
 
-
 func _on_enemy_hitbox_body_entered(body):
+	if body.get_node("../player").player_alive == false:
+		player_inattack_zone = false
+		return
 	if body.has_method("player"):
 		player_inattack_zone = true
-
 
 func _on_enemy_hitbox_body_exited(body):
 	if body.has_method("player"):
 		player_inattack_zone = false
 		
+#Enemy Taking Damage Function
 func deal_with_damage():
 	if player_inattack_zone and global.player_current_attack == true:
 		if can_take_damage == true:
 			health = health - 20
 			$take_damage_cooldown.start()
 			can_take_damage = false
-			print("slime health = ", health)
+			print("enemy health = ", health)
+			#enemy death
 			if health <= 0:
 				self.queue_free()
 

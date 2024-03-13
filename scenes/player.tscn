@@ -282,9 +282,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_u03us")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -419,15 +419,16 @@ radius = 4.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ksjg"]
 radius = 8.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D"]
 collision_layer = 3
 script = ExtResource("1_2hpln")
 metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jq0cu")
-animation = &"front_idle"
-frame_progress = 0.310665
+animation = &"death"
+frame = 2
+frame_progress = 1.0
 offset = Vector2(2.08165e-12, -15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
