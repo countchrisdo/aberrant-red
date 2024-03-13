@@ -1,9 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://22i1mbdubekf"]
+[gd_scene load_steps=7 format=3 uid="uid://22i1mbdubekf"]
 
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="1_casws"]
 [ext_resource type="Theme" uid="uid://dcxqieu7rrtmm" path="res://art/bluetheme.tres" id="2_6lpt0"]
+[ext_resource type="Texture2D" uid="uid://6ujo10hiexos" path="res://art/images/forrest1.png" id="3_nu65h"]
+[ext_resource type="FontFile" uid="uid://b7ixfmwa3c1wd" path="res://art/ui/pc-9800-bold.ttf" id="4_tb40p"]
 
 [sub_resource type="Theme" id="Theme_m2f6a"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ki0ir"]
+font = ExtResource("4_tb40p")
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -16,35 +23,67 @@ theme = SubResource("Theme_m2f6a")
 script = ExtResource("1_casws")
 metadata/_edit_lock_ = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(144, 81)
-zoom = Vector2(4, 4)
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-offset_left = 75.0
-offset_top = 79.0
-offset_right = 215.0
-offset_bottom = 147.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-
-[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("2_6lpt0")
-text = "Play"
-
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("2_6lpt0")
-text = "Quit"
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(144, 79)
+scale = Vector2(0.333578, 0.313516)
+texture = ExtResource("3_nu65h")
+metadata/_edit_lock_ = true
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 45.0
+offset_bottom = 45.0
+scale = Vector2(6.90886, 3.7977)
+color = Color(0, 0, 0, 0.560784)
+metadata/_edit_lock_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = -1
+offset_left = 10.0
+offset_top = 65.0
+offset_right = 91.0
+offset_bottom = 119.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_6lpt0")
+text = "Play"
+
+[node name="Quit" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_6lpt0")
+text = "Quit"
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+texture_filter = 3
+offset_left = 8.0
+offset_top = 19.0
+offset_right = 104.0
+offset_bottom = 35.0
+text = "Abberant RED"
+label_settings = SubResource("LabelSettings_ki0ir")
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+texture_filter = 3
+offset_left = 9.0
+offset_top = 39.0
+offset_right = 233.0
+offset_bottom = 55.0
+text = "A short RPG by: CountChrisdo"
+label_settings = SubResource("LabelSettings_ki0ir")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+z_index = 20
+position = Vector2(144, 81)
+zoom = Vector2(4, 4)
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
