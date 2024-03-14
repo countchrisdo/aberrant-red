@@ -2,11 +2,12 @@ extends Node
 
 signal game_over
 
-@onready var player = get_node("/root/world/player")
+@onready var player
 var player_current_attack = false
 
 var current_scene = "world" #world or world2
 var transition_scene = false 
+var score = 0
 
 var player_exit_world2_posx = 395
 var player_exit_world2_posy = 120
@@ -14,11 +15,13 @@ var player_start_posx = 20
 var player_start_posy = 120
 
 var game_first_loadin = true
-var game_state
+var game_state = "idle"
 
 func _ready():
-	game_state = "idle"
-	player.player_died.connect(_on_player_died)
+	pass
+	# if game_state == "running" or game_state == "over":
+	# 	player = get_node("/root/world/player")
+	# 	return player.player_died.connect(_on_player_died)
 
 func _on_player_died():
 	print("global has recieved death signal")
@@ -26,15 +29,19 @@ func _on_player_died():
 	emit_signal("game_over")
 	end_game()
 	
-func game_started():
-	game_state = "running"
-	#run code or call functions important to the games initial operation
 
 func end_game():
 	game_state = "over"
 	get_tree().change_scene_to_file("res://scenes/menu_end.tscn")
 	current_scene = "end_screen"
 	#go to end game screen
+	#save anything worth saving
+
+func win_game():
+	game_state = "over"
+	get_tree().change_scene_to_file("res://scenes/menu_win.tscn")
+	current_scene = "win_screen"
+	#go to win game screen
 	#save anything worth saving
 
 func finish_changescenes():

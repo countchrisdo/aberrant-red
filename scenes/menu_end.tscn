@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://3bjiur3km0hf"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_ymp2h"]
-[ext_resource type="Texture2D" uid="uid://6ujo10hiexos" path="res://art/images/forrest1.png" id="2_x5hbl"]
+[ext_resource type="Texture2D" uid="uid://cdbinpig1dddy" path="res://art/images/forest3.png" id="2_5uv10"]
 [ext_resource type="Theme" uid="uid://dcxqieu7rrtmm" path="res://art/bluetheme.tres" id="3_m0pdy"]
 [ext_resource type="FontFile" uid="uid://b7ixfmwa3c1wd" path="res://art/ui/pc-9800-bold.ttf" id="4_jop43"]
 
@@ -29,7 +29,7 @@ follow_viewport_enabled = true
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(144, 79)
 scale = Vector2(0.333578, 0.313516)
-texture = ExtResource("2_x5hbl")
+texture = ExtResource("2_5uv10")
 metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]

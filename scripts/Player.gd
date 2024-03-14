@@ -45,6 +45,12 @@ func _ready():
 	global.player = self
 	anim.play("front_idle")
 
+#sounds
+@onready var sword = $sword
+@onready var damage = $damage
+@onready var death = $death
+
+
 func _physics_process(delta):
 	#calling functions here bc this is every frame
 	current_camera()
@@ -54,6 +60,10 @@ func _physics_process(delta):
 		enemy_attack()
 		attack()
 		update_health()
+
+	#winning game function
+	if global.score >= 5:
+		global.win_game()
 	
 	if health <= 0:
 		player_alive = false
@@ -61,12 +71,13 @@ func _physics_process(delta):
 
 func die():
 	var anim = $AnimatedSprite2D
-
 	health = 0
-	print("Player has been killed")
-	anim.play("death")
-	#death_sound.play()
 	emit_signal("player_died")
+	print("Player has been killed")
+	death.play()
+	anim.play("death")
+	global._on_player_died()
+	
 
 func play_anim(movement):
 	var dir = current_dir
@@ -118,6 +129,7 @@ func _on_player_hitbox_body_exited(body):
 func enemy_attack():
 	if enemy_inattack_range and enemy_attack_cooldown == true:
 		health = health - 20
+		damage.play()
 		enemy_attack_cooldown = false
 		$attack_cooldown.start()
 		print("Player Health: ", health)
@@ -129,6 +141,9 @@ func attack():
 	var dir = current_dir
 	
 	if Input.is_action_just_pressed("attack"):
+		#play sound for sword
+		sword.play()
+
 		global.player_current_attack = true
 		attack_ip = true
 		if dir == "right":

@@ -1,7 +1,9 @@
-[gd_scene load_steps=57 format=3 uid="uid://bwfnsyhux5rd"]
+[gd_scene load_steps=59 format=3 uid="uid://bwfnsyhux5rd"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_2hpln"]
 [ext_resource type="Texture2D" uid="uid://bhw6ymkopefho" path="res://art/characters/player.png" id="2_hcwmn"]
+[ext_resource type="AudioStream" uid="uid://dqwqnm4o4lxgt" path="res://audio/07_human_atk_sword_1.wav" id="3_36e72"]
+[ext_resource type="AudioStream" uid="uid://b20vyfvo6bd5r" path="res://audio/11_human_damage_1.wav" id="4_1m7sw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r4tkm"]
 atlas = ExtResource("2_hcwmn")
@@ -479,6 +481,18 @@ offset_right = 137.0
 offset_bottom = 43.0
 scale = Vector2(0.1, 0.1)
 show_percentage = false
+
+[node name="sword" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_36e72")
+volume_db = -4.837
+
+[node name="damage" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_1m7sw")
+volume_db = -4.837
+
+[node name="death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_1m7sw")
+volume_db = -4.837
 
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]

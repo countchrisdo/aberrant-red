@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bx2c2tyrqng42"]
+[gd_scene load_steps=7 format=3 uid="uid://bx2c2tyrqng42"]
 
 [ext_resource type="Script" path="res://scripts/world2.gd" id="1_k4b8h"]
 [ext_resource type="TileSet" uid="uid://gaq62uq3o3f7" path="res://art/tilesets/tilemap.tres" id="2_726ck"]
 [ext_resource type="PackedScene" uid="uid://bwfnsyhux5rd" path="res://scenes/player.tscn" id="3_tlhg4"]
 [ext_resource type="PackedScene" uid="uid://dsox77cqrj7pl" path="res://scenes/enemy.tscn" id="4_3fcmu"]
+[ext_resource type="AudioStream" uid="uid://cqoo41j68eo81" path="res://audio/music/Jazz to Fish to - Guitar solo - Touhou snd - 120bpm.wav" id="5_u2uxj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csb0r"]
 size = Vector2(48.5, 40.5)
@@ -31,16 +32,24 @@ position = Vector2(44, 111)
 [node name="enemy" parent="." instance=ExtResource("4_3fcmu")]
 position = Vector2(161, 88)
 
+[node name="enemy2" parent="." instance=ExtResource("4_3fcmu")]
+position = Vector2(249, 152)
+
+[node name="enemy3" parent="." instance=ExtResource("4_3fcmu")]
+position = Vector2(22, 137)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(28, 33)
 limit_smoothed = true
 position_smoothing_enabled = true
 
 [node name="level border" type="StaticBody2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="level border"]
 position = Vector2(152, -61)
 polygon = PackedVector2Array(82, 61, 108, 62, 260, 63, 262, 312, -150, 313, -153, 202, -169, 202, -170, 163, -153, 161, -153, 61, 18, 59, 19, 47, -176, 50, -179, 331, 277, 332, 276, 46, 22, 49, 22, 60, 75, 61)
+metadata/_edit_lock_ = true
 
 [node name="world2_exit_point" type="Area2D" parent="."]
 position = Vector2(152, -61)
@@ -48,5 +57,9 @@ position = Vector2(152, -61)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="world2_exit_point"]
 position = Vector2(-171, 181)
 shape = SubResource("RectangleShape2D_csb0r")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_u2uxj")
+autoplay = true
 
 [connection signal="body_entered" from="world2_exit_point" to="." method="_on_world_2_exit_point_body_entered"]

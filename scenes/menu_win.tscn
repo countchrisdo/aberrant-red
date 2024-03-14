@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=3 uid="uid://dn7ejx003xmht"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_f6v1k"]
+[ext_resource type="Texture2D" uid="uid://d1irdm8jnolu3" path="res://art/images/forest2.png" id="2_881ok"]
+[ext_resource type="Theme" uid="uid://dcxqieu7rrtmm" path="res://art/bluetheme.tres" id="3_gqmxf"]
+[ext_resource type="FontFile" uid="uid://b7ixfmwa3c1wd" path="res://art/ui/pc-9800-bold.ttf" id="4_yn10l"]
+
+[sub_resource type="Theme" id="Theme_m2f6a"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ki0ir"]
+font = ExtResource("4_yn10l")
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[node name="menu_end" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_m2f6a")
+script = ExtResource("1_f6v1k")
+metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(144, 79)
+scale = Vector2(0.333578, 0.313516)
+texture = ExtResource("2_881ok")
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 45.0
+offset_bottom = 45.0
+scale = Vector2(6.90886, 3.7977)
+color = Color(0, 0, 0, 0.560784)
+metadata/_edit_lock_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+offset_left = 10.0
+offset_top = 65.0
+offset_right = 91.0
+offset_bottom = 119.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_gqmxf")
+text = "Replay"
+
+[node name="Quit" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_gqmxf")
+text = "Quit"
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+texture_filter = 3
+offset_left = 8.0
+offset_top = 19.0
+offset_right = 104.0
+offset_bottom = 35.0
+text = "You saved the forest!"
+label_settings = SubResource("LabelSettings_ki0ir")
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+texture_filter = 3
+offset_left = 9.0
+offset_top = 39.0
+offset_right = 233.0
+offset_bottom = 55.0
+text = "Thank you for playing (:"
+label_settings = SubResource("LabelSettings_ki0ir")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+z_index = 20
+position = Vector2(144, 81)
+zoom = Vector2(4, 4)
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

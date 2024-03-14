@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://22i1mbdubekf"]
+[gd_scene load_steps=8 format=3 uid="uid://22i1mbdubekf"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_casws"]
 [ext_resource type="Theme" uid="uid://dcxqieu7rrtmm" path="res://art/bluetheme.tres" id="2_6lpt0"]
-[ext_resource type="Texture2D" uid="uid://6ujo10hiexos" path="res://art/images/forrest1.png" id="3_nu65h"]
+[ext_resource type="Texture2D" uid="uid://6ujo10hiexos" path="res://art/images/forest1.png" id="3_nu65h"]
 [ext_resource type="FontFile" uid="uid://b7ixfmwa3c1wd" path="res://art/ui/pc-9800-bold.ttf" id="4_tb40p"]
+[ext_resource type="AudioStream" uid="uid://bywbbib68st26" path="res://audio/music/Jazz to Fish to - Guitar solo - Touhou snd - 108bpm.wav" id="5_1xdme"]
 
 [sub_resource type="Theme" id="Theme_m2f6a"]
 
@@ -12,7 +13,7 @@ font = ExtResource("4_tb40p")
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 0
 
-[node name="Menu" type="Control"]
+[node name="menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -66,7 +67,7 @@ offset_left = 8.0
 offset_top = 19.0
 offset_right = 104.0
 offset_bottom = 35.0
-text = "Abberant RED"
+text = "Aberrant RED"
 label_settings = SubResource("LabelSettings_ki0ir")
 
 [node name="Label2" type="Label" parent="CanvasLayer"]
@@ -83,6 +84,10 @@ z_index = 20
 position = Vector2(144, 81)
 zoom = Vector2(4, 4)
 metadata/_edit_lock_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_1xdme")
+autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

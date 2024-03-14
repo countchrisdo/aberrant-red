@@ -8,7 +8,7 @@ var health = 100
 var player_inattack_zone = false
 var can_take_damage = true
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	#This runs every frame
 	deal_with_damage()
 	update_health()
@@ -29,7 +29,7 @@ func _on_detection_area_body_entered(body):
 	player = body
 	player_chase = true
 
-func _on_detection_area_body_exited(body):
+func _on_detection_area_body_exited(_body):
 	player = null
 	player_chase = false
 
@@ -58,6 +58,8 @@ func deal_with_damage():
 			print("enemy health = ", health)
 			#enemy death
 			if health <= 0:
+				global.score += 1
+				print("score = ", global.score)
 				self.queue_free()
 
 func _on_take_damage_cooldown_timeout():
