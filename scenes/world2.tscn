@@ -40,7 +40,7 @@ position_smoothing_enabled = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="level border"]
 position = Vector2(152, -61)
-polygon = PackedVector2Array(82, 61, 108, 61, 264, 61, 265, 317, -153, 316, -153, 202, -169, 202, -170, 163, -153, 161, -153, 61, 18, 59, 19, 47, -176, 50, -179, 331, 277, 332, 276, 46, 22, 49, 22, 60, 75, 61)
+polygon = PackedVector2Array(82, 61, 108, 62, 260, 63, 262, 312, -150, 313, -153, 202, -169, 202, -170, 163, -153, 161, -153, 61, 18, 59, 19, 47, -176, 50, -179, 331, 277, 332, 276, 46, 22, 49, 22, 60, 75, 61)
 
 [node name="world2_exit_point" type="Area2D" parent="."]
 position = Vector2(152, -61)
